@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+body{
+  background: linear-gradient(to top, #151517,#292F2F) no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  overflow-x: hidden;
+}
+
+.container{
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.centerText{
+  text-align: center;
+  margin: 10px;
+}
+.row{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.col-3-large {
+  flex-grow: 1;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events:all;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+}
+
+.selectFilter{
+  position: relative;
+  display: block;
+  margin:auto;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding: 9px;
+  margin-top: 8px;
+  width: 200px;
+}
+.selectFilter option{
+  padding: 9px;
+  border: none;
+  background: #ddd;
+  color: black;
+  outline: none;
+}
+
+.border-sibarate{
+  height: 1px;
+  background: rgb(158, 158, 158);
+  width: 80%;
+  margin: 10px auto;
+}
+/* =============== */
+.add-item-btn{
+  display: block;
+  margin: 30px auto;
+  font-weight: bold;
+  width: 60%;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(0, 0, 0);
+  color:white;
+  box-shadow: 0 0 6px 0 rgb(65, 65, 65);
+  cursor: pointer;
+  transition: .3s;
+}
+.add-item-btn:hover{
+  background-color: rgb(224, 224, 224);
+  color: black;
+  box-shadow: 0 0 15px 3px rgb(180, 180, 180);
+}
+
+.address-item{
+  outline: none;
+  text-align: center;
+  color: black;
+  padding: 4px 5px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border: 1px solid black;
+}
+
+/* =============== */
+/* SPINNER */
+.loader{
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ================ */
+
+.trash{
+  cursor: pointer;
+}
+.trash:hover{
+  color:red
+}
+/* ========== */
+.SuccessMsg{
+  position: fixed;
+}

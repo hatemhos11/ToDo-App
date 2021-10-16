@@ -1,0 +1,68 @@
+.item {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+  max-width: 250px;
+  border-radius: 14px;
+  height: 300px;
+  background: white;
+  margin: 15px;
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  animation: opacity 2s;
+  overflow: hidden;
+  opacity: .8;
+}
+@keyframes opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.item:hover {
+  opacity: 1;
+}
+.viewTodos{
+  position: absolute;
+  padding: 8px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: black;
+  opacity: 0;
+  transition: .3s;
+}
+.ViewTodosText{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  padding: 3px;
+  pointer-events:none;
+  color: rgb(184, 184, 184);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item:hover .viewTodos{
+  opacity: 1;
+}
+
+.item .item-name{
+  color: rgb(43, 43, 43);
+  text-align: center;
+  margin: 8px;
+}
+.delBtn{
+  position:absolute;
+  color:red;
+  bottom:10%;
+  left:10%
+}
+.pinBtn{
+  position:absolute;
+  color:rgb(255, 255, 255);
+  bottom:10%;
+  right:10%;
+}

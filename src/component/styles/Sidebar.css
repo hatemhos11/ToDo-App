@@ -1,0 +1,64 @@
+.Sidebar{
+  height: 100vh;
+  position: fixed;
+  width: 300px;
+  color: white;
+  padding-top: 10px;
+  top: 0;
+  right: 0;
+  transform-origin: right;
+  transform: translateX(100%);
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.788);
+  transition: .3s;
+  z-index: 9;
+}
+.btn:hover{
+  opacity: .9;
+  box-shadow: 0 0 3px 3px rgb(141, 141, 141);
+}
+.Sidebar.sideShow{
+  transform: translateX(0);
+}
+.Sidebar.sideHide{
+  transform: translateX(100%);
+}
+
+.Sidebar h3{
+  text-align: center;
+  margin: 15px auto 8px auto;
+}
+
+.btn{
+  border-radius: 3px;
+  padding:6px;
+  background: white;
+  color:black;
+  transition: .3s;
+  cursor: pointer;
+  border: 1px solid black ;
+}
+.AddCategory input{
+  display: block;
+  margin: auto;
+}
+.AddCategory input[type=submit]{
+  margin-top: 10px;
+}
+ul.showCategories{
+  list-style: none;
+  color:white
+}
+ul.showCategories li{
+  margin-top: 5px;
+}
+.catControl{
+  display: flex;
+  justify-content: space-between;
+}
+.burgerIcon{
+  color: white;
+  width: 40px;
+  margin-left: -60px;
+  margin-top: 10px;
+}
