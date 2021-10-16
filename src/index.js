@@ -11,7 +11,7 @@ const store = createStore(AllReducers , applyMiddleware(thunk))
 
 ReactDOM.render(
 <React.StrictMode>
-  <BrowserRouter basename='/react'>
+  <BrowserRouter>
     <Provider store={store}> 
       <App />
     </Provider>
