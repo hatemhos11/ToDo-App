@@ -34,6 +34,7 @@ const OpenedTodoScreen = (props) => {
       setTasksName(currentTodo.name)
       setCategory(currentTodo.category)
     }
+// eslint-disable-next-line
   },[])
 
   const saveAndEditBlock =(id,name,category,Todos) =>{
