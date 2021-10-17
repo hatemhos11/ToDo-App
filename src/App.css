@@ -8,7 +8,7 @@ body{
   background-attachment: fixed;
   background-size: contain;
   overflow-x: hidden;
-}
+  font-family: 'Rubik', sans-serif;}
 
 .container{
   padding-right: 20px;
@@ -130,4 +130,19 @@ body{
 /* ========== */
 .SuccessMsg{
   position: fixed;
+}
+.image404{
+
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+.HomeBtn{
+  position: absolute;
+  top:30% ;
+}
+@media (max-width: 600px){
+  .image404{
+    width: 90%;
+  }  
 }

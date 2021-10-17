@@ -22,18 +22,19 @@ const OpenedTodoScreen = (props) => {
   Todos.sort((a,b) => a.createTime - b.createTime )
   
   const id = props.match.params.id.slice(1)
-  
   function isFoundInStore(){
     return todosFromReducer.includes(todosFromReducer.find((e) => e.id === id))
   }
 
   useEffect(() =>{
+    
     if(isFoundInStore()){
       const currentTodo =  todosFromReducer.find((e) => e.id === id)
-      setTodos([...currentTodo.todoes])
       setTasksName(currentTodo.name)
+      setTodos([...currentTodo.todoes])
       setCategory(currentTodo.category)
     }
+     // eslint-disable-next-line
   },[])
 
   const saveAndEditBlock =(id,name,category,Todos) =>{
@@ -75,7 +76,7 @@ const OpenedTodoScreen = (props) => {
             todo={todo}
             setTodos={setTodos}
           />
-      )
+        )
       })
     }
   }

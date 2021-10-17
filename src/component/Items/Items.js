@@ -30,7 +30,7 @@ const Items = () => {
       
 
       {/* pinned items */}
-      <div style={{textAlign:'center',color:'#ddd'}}>{blocks.find((b)=> b.isPin) && filterCat === '' ? 'Pinned' : ''}</div>
+      <div style={{textAlign:'center',color:'#ddd',marginTop:'10px'}}>{blocks.find((b)=> b.isPin) && filterCat === '' ? 'Pinned' : ''}</div>
       <div className='row'>
         {filtering(filterCat).map((block) => block.isPin === true ? <Item block={block} key={block.id}/> : null) }
       </div>
