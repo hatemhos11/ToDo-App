@@ -1,26 +1,4 @@
-export let TodoBlocks = [
-  {
-    id:'idd0d0271358aef',
-    name:'What I Will Do Today.',
-    modify: 1634177600620,
-    category: '',
-    isPin: false,
-    todoes:[
-      {
-        id: '1634078776774',
-        createTime: 1634078776774,
-        todoText:'Todo 1',
-        done: false
-      },
-      {
-        id: '1634078776374',
-        createTime: 1634078776274,
-        todoText:'Todo 2',
-        done: false
-      }
-    ]
-  }
-]
+export let TodoBlocks = []
 
 
 // ================= Add Block
@@ -55,7 +33,7 @@ export function EditTodoBlock(id, isPin,name,category,todoes){
 }
 
 // ================== categories
-export const categories = ['travelling','study']
+export const categories = ['Study']
 export function addCat(newCat){
   categories.push(newCat)
 }
