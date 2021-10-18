@@ -50,7 +50,7 @@ const EditBlockAct = (id,isPin,name,category, Todos) => {
 export const EditBlockFN = (id,isPin,name,category, Todos)=>{
   return  (dispatch) =>{    
     EditTodoBlock(id,isPin,name,category, Todos)
-    return dispatch(EditBlockAct(id, isPin, name || 'Unknown', category || '', Todos))
+    return dispatch(EditBlockAct(id, isPin,name || 'Unknown', category || '', Todos))
   }
 }
 

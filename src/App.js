@@ -5,12 +5,9 @@ import {  Route, Switch, withRouter } from 'react-router';
 import OpenedTodoScreen from './component/OpenedTodoScreen';
 import Error404 from './Error404';
 
-
-function App(props) {
-
-  
+function App() {
   return (
-    <div className="">
+    <div>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/todo:id' render={() => <OpenedTodoScreen/>} />

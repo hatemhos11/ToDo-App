@@ -1,4 +1,4 @@
-import React,{useEffect, useState,useRef, Fragment} from 'react'
+import React,{useEffect, useState,useRef,useMemo , Fragment} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { withRouter } from 'react-router'
 import { AddBlocksFN, EditBlockFN } from '../actions/TodosAct'
@@ -21,7 +21,7 @@ const OpenedTodoScreen = (props) => {
   const inp = useRef()
   Todos.sort((a,b) => a.createTime - b.createTime )
   
-  
+  console.log('openedTodo')
   const id = props.match.params.id.slice(1)
   function isFoundInStore(){
     return todosFromReducer.includes(todosFromReducer.find((e) => e.id === id))
@@ -52,18 +52,21 @@ const OpenedTodoScreen = (props) => {
   const handleAddNewTodo = (e) =>{
     e.preventDefault()    
     if(inputTask.trim() !== ''){
-      setTodos([...Todos,{id:Math.random(), createTime: Date.now() ,todoText: inputTask ,done: false}])
+      setTodos(Todos.concat({id:Math.random(), createTime: Date.now() ,todoText: inputTask ,done: false}))
       setinputTask('')
     }
     inp.current.focus()
   }
-
   const changeChecked= (e,todo) => {
     const newTodos = Todos.filter(t => t !== todo)
-    setTodos([...newTodos , {...todo,done:e.target.checked}])
+    setTodos([...newTodos , {...todo,done: e.target.checked}])
   }
-
+  
   // FILTER TODOS [done, not done]
+  // eslint-disable-next-line
+  const notCompleted = useMemo(() => IsCompleted(false), [Todos])
+  // eslint-disable-next-line
+const Completed = useMemo(() => IsCompleted(true), [Todos])
   function IsCompleted(isDone) {
     if(Todos.filter((t)=> t.done === isDone ).length === 0){
       return <div className='centerText'>{isDone ? '' : 'No Tasks' }</div>
@@ -82,12 +85,20 @@ const OpenedTodoScreen = (props) => {
       })
     }
   }
-
+  
+  function CloseScr(e){
+    if(e.target === e.currentTarget){
+      if(window.confirm('Do you want to save changes before closing?')) {
+        props.history.push('/')
+        saveAndEditBlock(id,tasksName.trim(),category, Todos)
+      }else {props.history.push('/')}
+    }
+  }
 
   // =========================================================================================
   // ================================= RETURN ================================================
   return (
-    <div className='overlay' onClick={(e) =>e.target === e.currentTarget ? props.history.push('/') : null}>
+    <div className='overlay' onClick={CloseScr} >
     <div className='OpenedTodoScreen container' >
 
 {/* select categories and input address name */}
@@ -105,7 +116,8 @@ const OpenedTodoScreen = (props) => {
           <input 
             type="text" 
             className='inp inpAdd'
-            placeholder='What needs to be done?' 
+            placeholder='What needs to be done?'
+            dir="auto"
             value={inputTask} 
             onChange={(e)=>setinputTask(e.target.value)} 
             ref={inp}/>
@@ -116,10 +128,10 @@ const OpenedTodoScreen = (props) => {
 {/* ALL TODOS */}
       <div className='todos-container'>
         <Fragment>
-          {IsCompleted(false)}
+          {notCompleted}
           <div className='border-sibarate'></div>
           <div className='centerText' style={{color:'#ccc'}}>Completed</div>
-          {IsCompleted(true)}
+          {Completed}
         </Fragment>
       </div>
 

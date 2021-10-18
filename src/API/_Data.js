@@ -76,7 +76,7 @@ export function EditTodoBlock(id, isPin,name,category,todoes){
 }
 
 // ================== categories
-export const categories = ['travelling','study']
+export const categories = ['Example 1']
 export function addCat(newCat){
   categories.push(newCat)
 }

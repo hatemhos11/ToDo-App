@@ -11,14 +11,20 @@ const Todo = (props) => {
     const newTodos = Todos.filter(t => t !== todo)
     setTodos([...newTodos , {...todo,todoText:ChangetodoText }])
   }
-  
+  console.log('todo')
+
+  function isArabic(text) {
+    const Chars = /[\u0600-\u06FF\u0750-\u077F]/;
+    let result = Chars.test(text.charAt(0));
+    return {textAlign: result ? 'right':'left', direction: result ? 'rtl' : 'ltr'}
+}
   return (
     <div>
       <div className={ isDone ? 'doneTodo Todo' : 'Todo'}> 
         {!EditMode ? 
-          <label>
-            <FeatherIcon icon={isDone ? 'check-square' : 'square'} className={isDone ? 'checkIcon done' : 'checkIcon'}/>
+          <label style={isArabic(ChangetodoText)}>
             <input type="checkbox" onChange={(e)=> changeChecked(e,todo)} checked={isDone}/>
+            <FeatherIcon icon={isDone ? 'check-square' : 'square'} className={isDone ? 'checkIcon done' : 'checkIcon'} />
             <span className='todoText'>{ChangetodoText}</span>
           </label> 
             : 
