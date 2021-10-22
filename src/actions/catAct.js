@@ -1,16 +1,13 @@
-import {addCat , categories} from '../API/_Data'
 
-const RecieveCatAct = (categories) => {
+const RecieveCatAct = () => {
   return {
     type:'RECIEVE_CAT',
-    categories
   }
 }
 
 export const RecieveCatFN = ()=>{
-  return async (dispatch) =>{
-    let res = await categories
-    return dispatch(RecieveCatAct(res))
+  return (dispatch) =>{
+    return dispatch(RecieveCatAct())
   }
 }
 
@@ -22,7 +19,6 @@ const AddCatAct = (newCat) => {
 }
 export const AddCatFN = (newCat)=>{
   return  (dispatch) =>{
-    addCat(newCat)
     return dispatch(AddCatAct(newCat))
   }
 }

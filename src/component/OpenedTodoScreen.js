@@ -2,27 +2,28 @@ import React,{useEffect, useState,useRef,useMemo , Fragment} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { withRouter } from 'react-router'
 import { AddBlocksFN, EditBlockFN } from '../actions/TodosAct'
-
+import Form from './Form'
 import Todo from './todo'
 import './styles/OpenedTodoScreen.css'
 
 
 
-
 const OpenedTodoScreen = (props) => {
+  // Redux Store Data
   const dispatch = useDispatch()
-
   const todosFromReducer = useSelector(state => state.TodosReducer)
-  const [tasksName,setTasksName] = useState('')
-  const [inputTask,setinputTask] = useState('')
-  const [category,setCategory] = useState('')
   const Categories = useSelector(state => state.CatReducer)
-  const [Todos,setTodos] = useState([])
-  const inp = useRef()
-  Todos.sort((a,b) => a.createTime - b.createTime )
   
-  console.log('openedTodo')
+  // State
+  const [tasksName,setTasksName] = useState('')
+  const [category,setCategory] = useState('')
+  const [inputTask,setinputTask] = useState('')
+  const [Todos,setTodos] = useState([])
+  Todos.sort((a,b) => a.createTime - b.createTime )
+  const inp = useRef()
   const id = props.match.params.id.slice(1)
+  
+
   function isFoundInStore(){
     return todosFromReducer.includes(todosFromReducer.find((e) => e.id === id))
   }
@@ -36,10 +37,11 @@ const OpenedTodoScreen = (props) => {
       setCategory(currentTodo.category)
     }
      // eslint-disable-next-line
-  },[])
+  }, [])
 
   // EDIT OLD TODO OR ADD NEW TODO LIST
   const saveAndEditBlock =(id,name,category,Todos) =>{
+    name = name === "" ? 'Unknown' : name
     if(isFoundInStore()){
       dispatch(EditBlockFN(id, todosFromReducer.find(e => e.id === id).isPin ,name, category, Todos))
     }else{
@@ -86,7 +88,7 @@ const Completed = useMemo(() => IsCompleted(true), [Todos])
     }
   }
   
-  function CloseScr(e){
+  function onCloseScr(e){
     if(e.target === e.currentTarget){
       if(window.confirm('Do you want to save changes before closing?')) {
         props.history.push('/')
@@ -98,46 +100,29 @@ const Completed = useMemo(() => IsCompleted(true), [Todos])
   // =========================================================================================
   // ================================= RETURN ================================================
   return (
-    <div className='overlay' onClick={CloseScr} >
-    <div className='OpenedTodoScreen container' >
+    <div className='overlay' onClick={onCloseScr} >
+      <div className='OpenedTodoScreen container' >
 
 {/* select categories and input address name */}
-      <div className='headTodoScr'>
-        <div className='AddForm row'>
-          <input className='inp inpAddress' type="text" placeholder='Address' value={tasksName} onChange={(e)=>setTasksName(e.target.value)} autoFocus/>
-          <select className='selectFilter' name="cat" value={category} onChange={(e)=> setCategory(e.target.value)}>
-            <option value="">Select Your Category</option>
-            {Categories.map((C) => <option key={Math.random()} value={C} > {C} </option>) }
-          </select>
-        </div>
-
-{/* FORM ADD NEW TODO */}
-        <form className='formAddTodo' onSubmit={handleAddNewTodo}>
-          <input 
-            type="text" 
-            className='inp inpAdd'
-            placeholder='What needs to be done?'
-            dir="auto"
-            value={inputTask} 
-            onChange={(e)=>setinputTask(e.target.value)} 
-            ref={inp}/>
-          <button type="submit" className='addBtn'>ADD</button>
-        </form>
-      </div>
+        <Form 
+          tasksName={tasksName} setTasksName={setTasksName} category={category}
+          setCategory={setCategory} Categories={Categories} handleAddNewTodo={handleAddNewTodo}
+          inputTask={inputTask} setinputTask={setinputTask} inp={inp}
+        />
 
 {/* ALL TODOS */}
-      <div className='todos-container'>
-        <Fragment>
-          {notCompleted}
-          <div className='border-sibarate'></div>
-          <div className='centerText' style={{color:'#ccc'}}>Completed</div>
-          {Completed}
-        </Fragment>
-      </div>
+        <div className='todos-container'>
+          <Fragment>
+            {notCompleted}
+            <div className='border-sibarate'></div>
+            <div className='centerText' style={{color:'#ccc'}}>Completed</div>
+            {Completed}
+          </Fragment>
+        </div>
 
 {/* SAVE BUTTON */}
-      <button className='saveBtn' onClick={() => saveAndEditBlock(id,tasksName.trim(),category, Todos)}><span>SAVE</span></button>
-    </div>
+        <button className='saveBtn' onClick={() => saveAndEditBlock(id,tasksName,category, Todos)}><span>SAVE</span></button>
+      </div>
     </div>
   )
 }

@@ -1,10 +1,8 @@
 .item {
-  display: flex;
+  display: grid;
+  place-items: center;
   position: relative;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 250px;
+  width: 250px;
   max-width: 250px;
   border-radius: 14px;
   height: 300px;
@@ -12,10 +10,13 @@
   margin: 15px;
   opacity: .8;
   cursor: pointer;
-  transition: .3s ease-in-out;
+  transition: .2s ease-in-out;
   animation: opacity 2s;
   overflow: hidden;
   opacity: .8;
+}
+.item.pinned {
+  border: 2px solid #fff453;
 }
 @keyframes opacity {
   from {opacity: 0;}
@@ -26,12 +27,13 @@
 }
 .viewTodos{
   position: absolute;
-  padding: 8px;
+  padding: 20px;
+  margin: -12px;
   bottom: 0;
   left: 0;
   right: 0;
   top: 0;
-  background-color: black;
+  background: linear-gradient(to bottom, black , rgb(43, 43, 43));
   opacity: 0;
   transition: .3s;
 }

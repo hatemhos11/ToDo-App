@@ -25,6 +25,7 @@
 @media (max-width: 1000px){
   .OpenedTodoScreen{
     width: 90%;
+    height: 80%;
   }
   .inp.inpAddress{
     width: 100% !important;

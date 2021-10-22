@@ -11,7 +11,6 @@ const Todo = (props) => {
     const newTodos = Todos.filter(t => t !== todo)
     setTodos([...newTodos , {...todo,todoText:ChangetodoText }])
   }
-  console.log('todo')
 
   function isArabic(text) {
     const Chars = /[\u0600-\u06FF\u0750-\u077F]/;

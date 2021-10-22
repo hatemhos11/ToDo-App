@@ -1,6 +1,8 @@
-const TodosReducer = (state = [], action) => {
+let AllTodos = localStorage.getItem('blocks') ? JSON.parse(localStorage.getItem('blocks')) : []
+
+const TodosReducer = (state = AllTodos, action) => {
   if(action.type === 'RECIEVE_DATA'){
-    return [...action.TodoBlocks]
+    return [...state]
   }else if(action.type === 'ADD_BLOCK'){
     return [...state, {
       id: action.id,

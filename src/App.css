@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 body{
-  background: linear-gradient(to top, #151517,#292F2F) no-repeat;
+  background: url("/src/imgs/backDark.webp") no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   overflow-x: hidden;
   font-family: 'Rubik', sans-serif;}
 
@@ -36,10 +36,32 @@ body{
   left: 0;
   right: 0;
   pointer-events:all;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  transition: .6s;
   z-index: 9999;
 }
 
+/* =============== */
+.add-item-btn{
+  display: block;
+  margin: 30px auto;
+  font-weight: bold;
+  width: 60%;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(0, 0, 0);
+  color:white;
+  box-shadow: 0 0 6px 2px rgb(136, 136, 136);
+  cursor: pointer;
+  transition: .3s;
+}
+.add-item-btn:hover{
+  background-color: rgb(224, 224, 224);
+  color: black;
+  box-shadow: 0 0 15px 3px rgb(180, 180, 180);
+}
+/* ========================Select Filter */
 .selectFilter{
   position: relative;
   display: block;
@@ -67,39 +89,8 @@ body{
   width: 80%;
   margin: 10px auto;
 }
-/* =============== */
-.add-item-btn{
-  display: block;
-  margin: 30px auto;
-  font-weight: bold;
-  width: 60%;
-  height: 30px;
-  border: none;
-  border-radius: 6px;
-  background-color: rgb(0, 0, 0);
-  color:white;
-  box-shadow: 0 0 6px 0 rgb(65, 65, 65);
-  cursor: pointer;
-  transition: .3s;
-}
-.add-item-btn:hover{
-  background-color: rgb(224, 224, 224);
-  color: black;
-  box-shadow: 0 0 15px 3px rgb(180, 180, 180);
-}
 
-.address-item{
-  outline: none;
-  text-align: center;
-  color: black;
-  padding: 4px 5px;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border: 1px solid black;
-}
-
-/* =============== */
+/* =============================== */
 /* SPINNER */
 .loader{
   border: 16px solid #f3f3f3;
@@ -119,7 +110,7 @@ body{
   100% { transform: rotate(360deg); }
 }
 
-/* ================ */
+/* ================Icons and Msg */
 
 .trash{
   cursor: pointer;
@@ -132,7 +123,6 @@ body{
   position: fixed;
 }
 .image404{
-
   width: 50%;
   height: auto;
   object-fit: cover;

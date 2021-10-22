@@ -27,11 +27,12 @@ const Item = (props) => {
     deleteS.currentTime = 0
   }
   // ================================= RETURN ================================================
+  const {id ,isPin ,todoes, name, modify} = props.block
   return (
-    <div className='item col-3-large'>
+    <div className={`item col-3-large ${isPin && 'pinned'}`}>
       <div className='viewTodos' onClick={(e) => e.target !== e.currentTarget ? null : OpenItem() }>
 
-        {props.block.todoes.slice(0,6).map((T) => (
+        {todoes.slice(0,6).map((T) => (
           <div className='ViewTodosText' key={Math.random()} >
             <FeatherIcon style={{color: T.done ? 'green' : '',marginRight:'5px'}} icon={T.done ? 'toggle-right': 'toggle-left'}/>
             <span>{T.todoText}</span>
@@ -40,15 +41,15 @@ const Item = (props) => {
         <div className='ViewTodosText' >...</div>
         {/* =============== icons */}
           <i title='Delete This Item' className='delBtn'><FeatherIcon icon='trash-2' onClick={(e)=>{
-              dispatch(DeleteBlockFN(props.block.id))
+              dispatch(DeleteBlockFN(id))
               deleteSound() }}/>
           </i>
-          <i title='Pin This Item' className='pinBtn'><FeatherIcon  icon={props.block.isPin ? 'lock' : 'unlock'} onClick={()=> handlePinBlock() } /></i>
+          <i title='Pin This Item' className='pinBtn'><FeatherIcon style={{color: isPin&&'#e4d500'}}  icon={isPin ? 'lock' : 'unlock'} onClick={()=> handlePinBlock() } /></i>
       </div>
-      <h3 className='item-name'>{props.block.name}</h3>
+      <h3 className='item-name'>{name}</h3>
       <div>
-        <div>{new Date(props.block.modify).toLocaleTimeString()}</div> 
-        <div>{new Date(props.block.modify).toLocaleDateString()}</div> 
+        <div>{new Date(modify).toLocaleTimeString()}</div> 
+        <div>{new Date(modify).toLocaleDateString()}</div> 
       </div>
     </div>
   )
