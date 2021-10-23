@@ -92,7 +92,7 @@ const OpenedTodoScreen = (props) => {
   // =========================================================================================
   // ================================= RETURN ================================================
   return (
-    <div className='overlay' onClick={() => saveAndEditBlock(id,tasksName,category, Todos)} >
+    <div className='overlay' onClick={(e) => e.target === e.currentTarget ? saveAndEditBlock(id,tasksName,category, Todos) : null} >
       <div className='OpenedTodoScreen container' >
 
 {/* select categories and input address name */}
