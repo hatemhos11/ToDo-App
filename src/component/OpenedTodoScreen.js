@@ -68,7 +68,8 @@ const OpenedTodoScreen = (props) => {
   // eslint-disable-next-line
   const notCompleted = useMemo(() => IsCompleted(false), [Todos])
   // eslint-disable-next-line
-const Completed = useMemo(() => IsCompleted(true), [Todos])
+  const Completed = useMemo(() => IsCompleted(true), [Todos])
+
   function IsCompleted(isDone) {
     if(Todos.filter((t)=> t.done === isDone ).length === 0){
       return <div className='centerText'>{isDone ? '' : 'No Tasks' }</div>
@@ -87,20 +88,11 @@ const Completed = useMemo(() => IsCompleted(true), [Todos])
       })
     }
   }
-  
-  function onCloseScr(e){
-    if(e.target === e.currentTarget){
-      if(window.confirm('Do you want to save changes before closing?')) {
-        props.history.push('/')
-        saveAndEditBlock(id,tasksName.trim(),category, Todos)
-      }else {props.history.push('/')}
-    }
-  }
 
   // =========================================================================================
   // ================================= RETURN ================================================
   return (
-    <div className='overlay' onClick={onCloseScr} >
+    <div className='overlay' onClick={saveAndEditBlock(id,tasksName,category, Todos)} >
       <div className='OpenedTodoScreen container' >
 
 {/* select categories and input address name */}
