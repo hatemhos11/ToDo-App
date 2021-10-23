@@ -48,6 +48,7 @@ const Item = (props) => {
       </div>
       <h3 className='item-name'>{name}</h3>
       <div>
+        <div style={{color:'#1890ff',textAlign:'center',fontSize:'12px'}}>Last Modify</div> 
         <div>{new Date(modify).toLocaleTimeString()}</div> 
         <div>{new Date(modify).toLocaleDateString()}</div> 
       </div>
