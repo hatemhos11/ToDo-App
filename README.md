@@ -4,7 +4,7 @@
    https://todooo-appp.netlify.app
 </p>
 <p align='center'>
-    <img src="https://user-images.githubusercontent.com/76979133/189490170-279469a0-6042-44b7-a097-cd5e7fa4375d.png" width="350" title="view">
+    <img src="https://user-images.githubusercontent.com/76979133/189490170-279469a0-6042-44b7-a097-cd5e7fa4375d.png" width="700" title="view">
 </p>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
