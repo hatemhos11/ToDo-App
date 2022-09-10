@@ -1,7 +1,7 @@
 https://todooo-appp.netlify.app
 # Getting Started with Create React App
 <p align='center'>
-![image](https://user-images.githubusercontent.com/76979133/189490170-279469a0-6042-44b7-a097-cd5e7fa4375d.png)
+  ![alt text]([http://url/to/img.png](https://user-images.githubusercontent.com/76979133/189490170-279469a0-6042-44b7-a097-cd5e7fa4375d.png))
 </p>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
