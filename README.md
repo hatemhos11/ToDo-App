@@ -1,7 +1,7 @@
 
 # Getting Started with Create React App
 <p align='center'>
-   https://todooo-appp.netlify.app
+   https://todoapp-rho-ecru.vercel.app
 </p>
 <p align='center'>
     <img src="https://user-images.githubusercontent.com/76979133/189490170-279469a0-6042-44b7-a097-cd5e7fa4375d.png" width="700" title="view">
